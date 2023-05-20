@@ -1,0 +1,33 @@
+﻿<Window x:Class="DailyPlanner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Ежедневник" Height="450" Width="800">
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBlock Text="Список дел:" FontWeight="Bold" FontSize="16"/>
+            <ListBox x:Name="tasksListBox" Margin="0 10" MinHeight="200" />
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Описание: " FontWeight="Bold" VerticalAlignment="Center"/>
+                <TextBox x:Name="descriptionTextBox" MinWidth="200" VerticalAlignment="Center" Margin="5"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Дата/время: " FontWeight="Bold" VerticalAlignment="Center"/>
+                <DatePicker x:Name="datePicker" VerticalAlignment="Center" Margin="5"/>
+                <TextBox x:Name="timeTextBox" Width="70" VerticalAlignment="Center" Margin="5"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 10">
+                <Button x:Name="addButton" Content="Добавить" Click="AddButton_Click" Margin="0 0 10 0"/>
+                <Button x:Name="editButton" Content="Изменить" Click="EditButton_Click" Margin="0 0 10 0"/>
+                <Button x:Name="deleteButton" Content="Удалить" Click="DeleteButton_Click" Margin="0 0 10 0"/>
+                <Button x:Name="searchButton" Content="Поиск" Click="SearchButton_Click" />
+            </StackPanel>
+            <ComboBox x:Name="filterComboBox" SelectedIndex="0" SelectionChanged="FilterComboBox_SelectionChanged">
+                <ComboBoxItem Content="Все" IsSelected="True"/>
+                <ComboBoxItem Content="Работа"/>
+                <ComboBoxItem Content="Учеба"/>
+                <ComboBoxItem Content="Личное"/>
+                <ComboBoxItem Content="Другое"/>
+            </ComboBox>
+        </StackPanel>
+    </Grid>
+</Window>
