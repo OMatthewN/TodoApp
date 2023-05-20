@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using CsvHelper;
+using CsvHelper.Configuration;
 
 namespace DailyPlanner
 {
@@ -27,7 +28,7 @@ namespace DailyPlanner
             if (File.Exists(dataFilePath))
             {
                 using (var reader = new StreamReader(dataFilePath))
-                using (var csv = new CsvReader(reader))
+                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                 {
                     tasks = csv.GetRecords<TaskItem>().ToList();
                 }
@@ -37,7 +38,7 @@ namespace DailyPlanner
         private void SaveTasksToDataFile()
         {
             using (var writer = new StreamWriter(dataFilePath))
-            using (var csv = new CsvWriter(writer))
+            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
                 csv.WriteRecords(tasks);
             }
